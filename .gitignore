@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# virtualenv
+.venv/
+
+# Logs
+*.log
+
+# Data artifacts (keep index.faiss, ignore duplicates)
+data/faiss/index.pkl
+
+# OS
+.DS_Store
+
+# Editor
+.vscode/
+.idea/
