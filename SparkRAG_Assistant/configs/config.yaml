@@ -1,0 +1,67 @@
+# Documentation sources
+sources:
+  spark:
+    base_url: "https://spark.apache.org/docs/latest/"
+    max_pages: 100
+    rate_limit: 5
+  
+  hadoop:
+    base_url: "https://hadoop.apache.org/docs/stable/"
+    max_pages: 50
+    rate_limit: 5
+  
+  python:
+    base_url: "https://docs.python.org/3/"
+    max_pages: 150
+    rate_limit: 5
+
+# Chunking
+chunking:
+  chunk_size: 512
+  chunk_overlap: 64
+
+# Embedding (Local - FREE!)
+embedding:
+  model: "BAAI/bge-base-en-v1.5"
+  dimension: 768
+  device: "cpu"
+
+# Vector Store
+vector_store:
+  data_dir: "data/faiss"
+
+# Retrieval with Reranking
+retrieval:
+  # Stage 1: Initial retrieval
+  initial_k: 50
+  
+  # Stage 2: Reranking
+  use_reranker: true
+  reranker_model: "cross-encoder/ms-marco-MiniLM-L-6-v2"
+  rerank_k: 10
+  
+  # Final results
+  final_k: 5
+
+# Generation (Local - FREE!)
+generation:
+  model: "llama3.2"
+  base_url: "http://localhost:11434"
+  temperature: 0.1
+  max_tokens: 1000
+
+  # Chatbot configuration
+chatbot:
+  enabled: true
+  # Memory settings
+  memory_type: "buffer"  # or "buffer_window", "summary"
+  max_history_length: 10  # Max turns to remember
+  
+  # Session settings
+  session_timeout_minutes: 60  # Auto-clear after 60 min of inactivity
+  max_sessions: 1000  # Maximum concurrent sessions
+  
+  # Response settings
+  streaming: false  # Enable streaming responses (future)
+  max_tokens: 1500
+  temperature: 0.1
